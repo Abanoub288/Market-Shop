@@ -1,0 +1,10 @@
+nav .navbar-brand {
+  color: #0aad0a;
+  font-size: 30px;
+}
+nav .nav-item .nav-link {
+  font-weight: 900;
+}
+nav .nav-item:hover .nav-link {
+  color: #0aad0a;
+}
