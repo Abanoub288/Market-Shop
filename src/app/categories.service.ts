@@ -13,4 +13,12 @@ export class CategoriesService {
   getAll():Observable<any> {
     return this._HttpClient.get('https://dummyjson.com/products')
   }
+
+  getAllCategory():Observable<any> {
+    return this._HttpClient.get('https://dummyjson.com/products/category-list')
+  }
+
+  getProductsDetiles(id: any): Observable<any> {
+    return this._HttpClient.get(`https://dummyjson.com/products/${id}`)
+  }
 }

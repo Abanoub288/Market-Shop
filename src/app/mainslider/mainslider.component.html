@@ -1,19 +1,16 @@
-<div class="row mt-5 gx-0">
-  <div class="col-md-9">
-    <owl-carousel-o [options]="customOptions">
-      <ng-template carouselSlide>
-        <img height="300" src="../../assets/slid.jpeg" alt="">
-      </ng-template>
-      <ng-template carouselSlide>
-        <img height="300" src="../../assets/slid2.jpeg" alt="">
-      </ng-template>
-      <ng-template carouselSlide>
-        <img height="300" src="../../assets/slid3.jpeg" alt="">
-      </ng-template>
-    </owl-carousel-o>
+<div class="container m-2 gx-0">
+  <div class="row">
+    <div class="col-md-9">
+      <img class="img-fuled" src="../../assets/img2.jpeg" alt="">
+    </div>
+    <div class="col-md-3">
+      <img src="../../assets/images.jpeg" alt="">
+    </div>
   </div>
-  <div class="col-md-3">
-    <img style="width: 100%;" height="150" src="../../assets/slid2.jpeg" alt="">
-    <img style="width: 100%;" height="150" src="../../assets/slider-image-1.jpeg" alt="">
-  </div>
+  <h3 class="fw-bolder c-main">Category</h3>
+  <owl-carousel-o [options]="carouselOptions">
+    <ng-template carouselSlide *ngFor="let cate of categrois">
+      <p class="c-main  fw-bolder text-center">{{cate}}</p>
+    </ng-template>
+  </owl-carousel-o>
 </div>

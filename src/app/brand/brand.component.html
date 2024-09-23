@@ -1,19 +1,19 @@
 <div class="row">
-  <div *ngFor="let product of products" class="col-md-2" style="height: 370px;">
-    <div class="product mb-20 px-2 py-4">
-      <a [routerLink]="['/productdetails', product._id]">
-        <img width="150px" height="200px" src="{{product.images[0]}}"  alt="">
-        <span class="text-main fw-bold font-sm">{{product.category.name}}</span>
-        <h3 class="h6 fw-bolder">{{product.title}}</h3>
-        <div class="d-flex align-items-center justify-content-between">
-          <span class="text-muted fw-bold font-sm">{{product.price|currency}}</span>
+  <div *ngFor="let product of products" class="col-lg-4 col-md-6 col-sm-12">
+    <div class="product">
+      <a [routerLink]="['/productdetails', product.id]">
+        <img src="{{product.images[0]}}" alt="">
+        <h5>{{product.title}}</h5>
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="price fw-bolder fs-5 c-main">{{product.price|currency}}</span>
           <div>
-            <i class="fas fa-star rating-color"></i>
-            <span class="text-muted fw-bold font-sm">{{product.ratingsAverage}}</span>
+            <p class="fw-bold c-black fs-6">Rating:
+              <span [ngStyle]="{'color': (product?.rating < 3) ? 'red' : 'green'}">{{product?.rating}}</span>
+            </p>
           </div>
         </div>
       </a>
-      <button class="btn bg-main text-white w-100 my-2"> + Add</button>
+      <button (click)="addToCart(product)" class="bg-main">Add To Cart</button>
     </div>
   </div>
 </div>

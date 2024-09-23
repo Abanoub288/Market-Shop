@@ -1,6 +1,4 @@
-.footer {
-  background-color: #f0f3f2;
-}
+
 input {
   margin-left: 20px;
 }
@@ -19,5 +17,34 @@ button {
   margin-right: 10px;
 }
 hr {
-  color: #3333338a;
+  color: #fff;
+}
+@media (max-width: 572px) {
+  .head h4,
+  .head p {
+    text-align: center;
+  }
+
+  .d-flex {
+    flex-direction: column;
+  }
+
+  .form-control {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .footer .payment {
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .footer .text {
+    margin: 0;
+    font-size: 20px;
+  }
 }

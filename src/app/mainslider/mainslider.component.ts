@@ -8,19 +8,40 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class MainsliderComponent {
 
-  customOptions: OwlOptions = {
+  categrois: string [] = [
+    "beauty",
+    "fragrances",
+    "furniture",
+    "groceries",
+    "home-decoration",
+    "kitchen-accessories",
+    "laptops",
+    "mens-shirts",
+    "mens-shoes",
+    "mens-watches",
+    "mobile-accessories",
+    "motorcycle",
+    "skin-care",
+    "smartphones",
+    "sports-accessories",
+    "sunglasses",
+    "tablets",
+    "tops",
+    "vehicle",
+    "womens-bags",
+    "womens-dresses",
+    "womens-jewellery",
+    "womens-shoes",
+  ]
+
+  carouselOptions: OwlOptions = {
     loop: true,
-    mouseDrag: true,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-    },
-    nav: true
-  }
+    autoplay: true,
+    autoplayTimeout: 1000,
+    autoplayHoverPause: false,
+    items: 3,
+    dots: true,
+    nav: false,
+    navText: ['']
+  };
 }

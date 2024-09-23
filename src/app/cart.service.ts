@@ -1,17 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-
+import { Observable, BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 
 export class CartService {
 
-  constructor(private _HttpClient: HttpClient) { }
+  constructor(private _HttpClient: HttpClient) {}
 
-  addToCart(productId:string):Observable<any> {
-    return this._HttpClient.post(`https://route-ecommerce.onrender.com/api/v1/cart`,
-    {productId:productId})
+  cartNewCart(model: any): Observable<any> {
+    return this._HttpClient.post('https://dummyjson.com/carts/add', model)
   }
 }

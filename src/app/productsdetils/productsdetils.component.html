@@ -1,25 +1,56 @@
-<div class="row py-4 align-items-center">
-  <div class="col-md-4">
-    <owl-carousel-o [options]="customOptions">
-
-      <ng-container *ngFor="let img of productDetiles.images">
-        <ng-template carouselSlide>
-          <img [src]="img">
-        </ng-template>
-      </ng-container>
-
-    </owl-carousel-o>
+<div class="row py-5 align-items-center">
+  <div class="col-md-5">
+    <img width="400px" height="350px" src="{{productDetiles?.images[0]}}">
   </div>
-  <div class="col-md-8">
-    <h2 class="h4 fw-bolder mb-2">{{productDetiles?.title}}</h2>
-    <p class="text-muted p-3">{{productDetiles?.description}}</p>
+  <div class="col-md-7">
+    <h2 class="fw-bolder mb-2">{{productDetiles?.title}}</h2>
+    <p class="text-muted p-3 fw-bold fs-4">{{productDetiles?.description}}</p>
     <div class="d-flex align-items-center justify-content-between">
-      <span class="text-muted fw-bold font-sm">{{productDetiles?.price}}</span>
+      <span class=" fw-bolder fs-3 c-main">{{productDetiles?.price|currency}}</span>
       <div>
-        <i class="fas fa-star rating-color"></i>
-        <span class="text-muted fw-bold font-sm">{{productDetiles?.ratingsAverage}}</span>
+        <p class="fw-bold c-main fs-3">Rating:
+          <span [ngStyle]="{'color': (productDetiles?.reviews?.[0]?.rating <= 3) ? 'green' : 'red'}"
+          >{{productDetiles?.rating}}</span>
+        </p>
       </div>
     </div>
-    <button class="btn bg-main text-white w-100 my-2"> + Add</button>
+    <button (click)="addToCart(productDetiles)" class="btn bg-main text-white w-50 my-2">Add To Cart</button>
+  </div>
+  <div class="col-md-12">
+    <h2 class="c-main p-3">Review people: </h2>
+    <div class="reviews text-center p-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{productDetiles?.reviews[0]?.reviewerName}}</td>
+            <td  [ngStyle]="{'color': (productDetiles?.reviews?.[0]?.rating > 3) ? 'green' : 'red'}">
+              {{productDetiles?.reviews?.[0]?.rating || 'No rating'}}
+            </td>
+            <td>{{productDetiles?.reviews?.[0]?.comment}}</td>
+          </tr>
+          <tr>
+            <td>{{productDetiles?.reviews[1]?.reviewerName}}</td>
+            <td [ngStyle]="{'color': (productDetiles?.reviews?.[0]?.rating > 3) ? 'green' : 'red'}">
+              {{productDetiles?.reviews?.[1]?.rating || 'No rating'}}
+            </td>
+            <td>{{productDetiles?.reviews?.[1]?.comment}}</td>
+          </tr>
+          <tr>
+            <td>{{productDetiles?.reviews[2]?.reviewerName}}</td>
+            <td [ngStyle]="{'color': (productDetiles?.reviews?.[0]?.rating > 3) ? 'green' : 'red'}">
+              {{productDetiles?.reviews?.[2]?.rating || 'No rating'}}
+            </td>
+            <td>{{productDetiles?.reviews?.[2]?.comment}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

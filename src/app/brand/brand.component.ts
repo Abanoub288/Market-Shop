@@ -18,4 +18,10 @@ export class BrandComponent implements OnInit {
       next: (Response) => this.products = Response.products
     })
   }
+
+  addToCart(product: any) {
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
 }

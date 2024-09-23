@@ -1,3 +1,36 @@
-<div class="container">
-  
-</div>
+  <div class="container mt-5">
+    <h2 class="c-main fw-bolder text-center mb-4">Shoping Cart: </h2>
+    <div class="row">
+      <div *ngFor="let product of cartProducts" class="col-md-8 col-md-12">
+        <div class="row cart-item">
+          <div class="col-4 col-md-3">
+            <img src="{{product.thumbnail}}" alt="Product 1" class="img-fluid">
+          </div>
+          <div class="col-8 col-md-6">
+            <h5 class="fw-bolder">{{product.title}}</h5>
+            <label class="c-main fs-4 fw-bolder" for="quantity">Quantity: </label>
+            <input type="number" min="1" [(ngModel)]="product.quantity" (change)="updateQuantity(product.id, product.quantity)" />
+          </div>
+          <div class="col-12 col-md-3 text-md-end">
+            <span class="c-main fw-bolder fs-4">Price: {{ product.price * product.quantity }}$</span>
+            <div class="mt-2">
+              <button (click)="removeFromCart(product.id)" class="btn btn-danger">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="cart-total c-main fs-4 py-3">Total Price: {{ getCartTotal() }}$</h3>
+            <button class="btn bg-main text-color fw-bold w-100">Order Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+

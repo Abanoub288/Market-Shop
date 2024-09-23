@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsServiceService } from '../products-service.service';
-import { OwlOptions } from 'ngx-owl-carousel-o';
-
-
+import { CategoriesService } from '../categories.service';
 
 @Component({
   selector: 'app-productsdetils',
@@ -15,31 +12,22 @@ export class ProductsdetilsComponent implements OnInit {
   productId:any;
   productDetiles:any;
 
-  constructor(private _ActivatedRoute: ActivatedRoute, private _ProductsServiceService: ProductsServiceService) {}
+  constructor(private _ActivatedRoute: ActivatedRoute, private _CategoriesService: CategoriesService) {}
 
   ngOnInit():void {
     this._ActivatedRoute.paramMap.subscribe((prams)=> {
       this.productId = prams.get('id')
     })
 
-    this._ProductsServiceService.getProductsDetiles(this.productId).subscribe({
-      next:(response)=> this.productDetiles = response.data,
+    this._CategoriesService.getProductsDetiles(this.productId).subscribe({
+      next: (response) => this.productDetiles = response
     })
   }
 
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-    },
-    nav: true
+  addToCart(product: any) {
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
+
 }
